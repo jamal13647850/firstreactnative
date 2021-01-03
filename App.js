@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React,{useState} from 'react';
-import { StyleSheet, Text, View,Button,TextInput ,ScrollView} from 'react-native';
+import { StyleSheet, Text, View,Button,TextInput ,ScrollView, FlatList} from 'react-native';
 
 export default function App() {
   const [firstName,setFirstName]=useState('جمال');
@@ -36,7 +36,12 @@ export default function App() {
       </Text>
       <TextInput style={styles.textinput} keyboardType="numeric" onChangeText={value =>setAge(value)}/>
       
-      <ScrollView>
+      <FlatList keyExtractor={item => item.id.toString()} data={masters} renderItem={({item:master})=>(
+        <Text style={styles.card}>
+          {master.fullname} 
+        </Text>
+      )}/>
+      {/* <ScrollView>
         {masters.map(master=>{
           return (
             <View key={master.id}>
@@ -47,7 +52,7 @@ export default function App() {
             </View>
           )
         })}
-      </ScrollView>
+      </ScrollView> */}
       
       
       <StatusBar style="auto" />
