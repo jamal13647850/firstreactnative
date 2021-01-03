@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React,{useState} from 'react';
-import { StyleSheet, Text, View,Button,TextInput ,ScrollView, FlatList} from 'react-native';
+import { StyleSheet, Text, View,Button,TextInput ,ScrollView, FlatList,TouchableOpacity} from 'react-native';
 
 export default function App() {
   const [firstName,setFirstName]=useState('جمال');
@@ -15,6 +15,13 @@ export default function App() {
     {id:7,fullname:"استاد بهاری"},
     {id:8,fullname:"استاد صدفی"}
   ]);
+
+  const deleteItem = id=>{
+    //const filtered = masters.filter(master=>master.id!==id);
+    //setMasters(filtered);
+    setMasters(prevState=>prevState.filter(master=>master.id!==id))
+  }
+
   const handleNameChange = () =>{
     setFirstName("کمال");
   }
@@ -37,10 +44,14 @@ export default function App() {
       <TextInput style={styles.textinput} keyboardType="numeric" onChangeText={value =>setAge(value)}/>
       
       <FlatList keyExtractor={item => item.id.toString()} data={masters} renderItem={({item:master})=>(
-        <Text style={styles.card}>
-          {master.fullname} 
-        </Text>
+        <TouchableOpacity onPress={()=>{deleteItem(master.id)}}>
+          <Text style={styles.card}>
+            {master.fullname} 
+          </Text>
+        </TouchableOpacity>
+        
       )}/>
+
       {/* <ScrollView>
         {masters.map(master=>{
           return (
