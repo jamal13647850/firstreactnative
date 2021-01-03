@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React,{useState} from 'react';
 import { StyleSheet, Text, View,Button,TextInput ,ScrollView, FlatList,TouchableOpacity} from 'react-native';
-
+import Playground from "./components/Playground"
 export default function App() {
   const [firstName,setFirstName]=useState('جمال');
   const [age,setAge]=useState();
@@ -65,7 +65,7 @@ export default function App() {
         })}
       </ScrollView> */}
       
-      
+      <Playground></Playground>
       <StatusBar style="auto" />
     </View>
   );
