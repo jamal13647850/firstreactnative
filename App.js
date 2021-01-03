@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React,{useState} from 'react';
-import { StyleSheet, Text, View,Button } from 'react-native';
+import { StyleSheet, Text, View,Button,TextInput } from 'react-native';
 
 export default function App() {
   const [firstName,setFirstName]=useState('جمال');
+  const [age,setAge]=useState();
 
   const handleNameChange = () =>{
     setFirstName("کمال");
@@ -18,6 +19,13 @@ export default function App() {
         <Text>سلام {firstName}</Text>
         <Button title="کلیک کن" onPress={handleNameChange}/>
       </View>
+      <View style={{margin:30,backgroundColor:'orange',borderRadius:10,width:300}}>
+        <Text>سن: {age}</Text>
+      </View>
+      <Text>
+        آقا چند سالته:
+      </Text>
+      <TextInput style={styles.textinput} keyboardType="numeric" onChangeText={value =>setAge(value)}/>
       <StatusBar style="auto" />
     </View>
   );
@@ -37,5 +45,15 @@ const styles = StyleSheet.create({
   jamtext:{
     color: 'white',
     fontWeight: 'bold'
+  },
+  textinput:{
+    borderWidth:1,
+    borderColor:"lightgrey",
+    borderRadius:10,
+    padding:15,
+    margin:10,
+    width: 250,
+    textAlign:"center",
+    fontSize:15,
   }
 });
