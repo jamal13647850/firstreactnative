@@ -1,7 +1,7 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import {MaterialIcons} from "@expo/vector-icons"
-
+import {styles} from './styles/playgroundStyle'
 
 export default function Playground() {
     return (
@@ -16,29 +16,3 @@ export default function Playground() {
 }
 
 
-const styles = StyleSheet.create({
-    container: {
-        width: '100%',
-        paddingTop:40,
-        backgroundColor:'grey',
-        flexDirection:'row',
-        justifyContent:'space-around'
-    },
-    textOne:{
-        padding:10,
-        backgroundColor:'orange',
-    },
-    textTwo:{
-        padding:10,
-        backgroundColor:'skyblue',
-    },
-    textThree:{
-        padding:10,
-        backgroundColor:'violet',
-    },
-    textFour:{
-        padding:10,
-        backgroundColor:'green',
-    },
-
-  });
