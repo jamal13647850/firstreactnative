@@ -114,6 +114,8 @@ export default function Home(props) {
           <Text>سلام {firstName}</Text>
           <Button title="کلیک کن" onPress={handleNameChange} />
           <Button title="برو به درباره ما" onPress={pressHandler} />
+          <Button title="برو به جزئیات" onPress={()=>props.navigation.navigate("DETAILS",{id:'1',text:'سلام'})} />
+          <Button title="برو به جزئیات بدون پارامتر" onPress={()=>props.navigation.navigate("DETAILS")} />
         </View>
         <View style={{ margin: 30, backgroundColor: 'orange', borderRadius: 10, width: 300 }}>
           <Text>سن: {age}</Text>
