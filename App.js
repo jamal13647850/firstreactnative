@@ -4,10 +4,16 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Home from './screens/home'
 import About from './screens/about'
 import Details from './screens/details'
+import { Button,Image } from 'react-native';
+
 
 const Stack = createStackNavigator();
 
-
+const LogoTitle=() => {
+  return(
+    <Image style={{width:50,height:50}} source={require("./assets/icon.png")}/>
+  )
+}
 
 export default function App() {
   return (
@@ -27,6 +33,10 @@ export default function App() {
         <Stack.Screen name="HOME" component={Home}
           options={{
             title: "خانه",
+            headerTitle:(props)=><LogoTitle {...props}/>,
+            headerRight:()=>(
+              <Button title="test" color="green" onPress={()=>alert("salam")}></Button>
+            )
           }}
         />
         <Stack.Screen name="ABOUT" component={About} />

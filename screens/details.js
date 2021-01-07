@@ -12,6 +12,9 @@ export default function Details({navigation,route}){
                 <Text>{id}</Text>
                 <Text>{text}</Text>
             </View>
+            <View style={styles.seperator}>
+                <Button title="به روز رسانی عنوان صفحه" onPress={()=>navigation.setOptions({title:"جزئیات"})}></Button>
+            </View>
         </View>
     )
 }
