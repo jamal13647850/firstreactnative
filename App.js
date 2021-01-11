@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Home from './screens/home'
 import About from './screens/about'
 import Details from './screens/details'
-import { Button,Image } from 'react-native';
+import { Button,Image } from 'react-native'
 
 
 const Stack = createStackNavigator();
