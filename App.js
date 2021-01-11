@@ -6,7 +6,8 @@ import About from './screens/about'
 import Details from './screens/details'
 import { Button,Image,View } from 'react-native'
 import {createDrawerNavigator} from '@react-navigation/drawer'
-
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
+import {Ionicons} from '@expo/vector-icons'
 
 const Stack = createStackNavigator();
 
@@ -39,26 +40,58 @@ const InformationScreen = ({navigation})=>{
  };
 
 const Drawer=createDrawerNavigator();
+
+const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator 
-      initialRouteName="HomeScreen" 
-      drawerPosition="right"
-      drawerStyle={{
-        backgroundColor:"orange",
-        width:250
-      }}
+      <Tab.Navigator
+        screenOptions={({route})=>({
+          tabBarIcon:({focused,color,size})=>{ 
+            let iconName;
+            if(route.name==='HomeScreen'){
+              iconName=focused?"ios-information-circle":"ios-information-circle-outline";
+            }
+            else if(route.name==="InformationScreen"){
+              iconName=focused?"ios-list-box":"ios-list";
+            }
+
+            return (
+              <Ionicons name={iconName} size={size} color={color}/>
+            )
+          }
+        })}
+        tabBarOptions={{
+          activeTintColor:"tomato",
+          inactiveTintColor:"gray"
+        }}
       >
-        <Drawer.Screen name="HomeScreen" component={HomeScreen}/>
-        <Drawer.Screen 
-        name="InformationScreen" 
-        component={InformationScreen}
+        <Tab.Screen name="HomeScreen" component={HomeScreen}/>
+        <Tab.Screen name="InformationScreen" component={InformationScreen}
         options={{
           title:"اطلاعات",
-        }}/>
-      </Drawer.Navigator>
+          }}
+        />
+      </Tab.Navigator>
     </NavigationContainer>
+    // <NavigationContainer>
+    //   <Drawer.Navigator 
+    //   initialRouteName="HomeScreen" 
+    //   drawerPosition="right"
+    //   drawerStyle={{
+    //     backgroundColor:"orange",
+    //     width:250
+    //   }}
+    //   >
+    //     <Drawer.Screen name="HomeScreen" component={HomeScreen}/>
+    //     <Drawer.Screen 
+    //     name="InformationScreen" 
+    //     component={InformationScreen}
+    //     options={{
+    //       title:"اطلاعات",
+    //     }}/>
+    //   </Drawer.Navigator>
+    // </NavigationContainer>
     //  <NavigationContainer>
     //   <Stack.Navigator
     //     screenOptions={{
